@@ -1,0 +1,49 @@
+﻿@model IEnumerable<PartialViewCRUD.ViewModel.ViewModelStudent>
+
+<div>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th> Tên </th>
+                <th> Tuổi </th>
+                <th> Ngày sinh </th>
+                <th> Địa chỉ </th>
+                <th> Lớp </th>
+                <th>  </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td> @item.Name</td>
+                    <td> @item.Age</td>
+                    <td> @item.Birthday</td>
+                    <td> @item.Address</td>
+                    <td> @item.ClassName </td>
+                    <td>
+                        <button class="btn-edit" data-id="@item.ID" data-name="@item.Name" data-age="@item.Age" data-birth="@item.Birthday.Value.ToString("yyyy-MM-dd")" data-address="@item.Address" data-class="@item.IDClass"> <i class="fas fa-edit text-success"></i></button>
+                        <button class="btn-delete"> <i class="far fa-trash-alt text-danger"></i> </button>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        @for (int i = 1; i <= ViewBag.pageCount; i++)
+        {
+            if (i == ViewBag.pageNumber)
+            {
+                <button data-page="@i" class="active">  @i  </button>
+
+            }
+            else
+            {
+                <button data-page="@i">  @i  </button>
+            }
+        }
+    </div>
+</div>

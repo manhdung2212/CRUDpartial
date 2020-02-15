@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron">
+    <h2> Quản lí học sinh </h2>
+</div>
+<div class="main">
+    <h2> Danh sách học sinh </h2>
+    <br />
+    <input type="text" name="searchName" value="" class="form-control" placeholder="nhập tên..." />
+    <hr />
+    <div class="get-data">
+
+    </div>
+    <br />
+    <div class="form-add-edit">
+        @Html.Action("FormCreateEdit", "StudentManager")
+    </div>
+</div>
