@@ -20,10 +20,10 @@ function EditClick() {
 }
 EditClick(); 
 
-function GetListStudent(url) {
+function GetListStudent() {
     
     $.ajax({
-        url: url, 
+        url: "/StudentManager/ListStudent", 
         type: "POST",  
         dataType: "html", 
         data: {
@@ -49,6 +49,7 @@ function GetListStudent(url) {
     })
 }
 GetListStudent();
+AddStudent(); 
 Update(); 
 function AddStudent() {
     $('.btn-createEdit').click(function () {
@@ -166,42 +167,3 @@ function Check(name, address, age, birth, idClass) {
     }
     else return true; 
 }
-
-function AddOrEdit() {
-    $(".btn-createEdit").click(function () {
-        let data = {};
-        $('.add-or-edit input , .add-or-edit select , .add-or-edit input:checked').each(function () {
-            var key = $(this).attr('name');
-            var value = $(this).val();
-            data[key] = value;  
-        });
-        let url = $(this).attr('data-url');
-        console.log(url); 
-        console.log(JSON.stringify(data));  
-        $.ajax({
-            url: url,
-            type: "POST",
-            contentType: "application/json",
-            dataType: "json",
-            data: JSON.stringify(data), 
-            beforeSend: function () {
-
-            },
-            success: function (res) {
-                if (res) {
-                    GetListStudent();
-                    DefaultValueInput();
-                    alert('Thêm thành công!');
-                }
-            },
-            error: function () {
-
-            },
-            complete: function () {
-
-            }
-        })
-    })
-    
-}
-AddOrEdit(); 
